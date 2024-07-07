@@ -4,34 +4,45 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class LC39_CombinationSum1 {
+public class LC40_CombinationSum2 {
     public static void main(String[] args) {
-        int[] candidates = {2, 3, 6, 7};
-        int target = 7;
-        List<List<Integer>> lists = combinationSum(candidates, target);
+        int[] candidates = {10,1,2,7,6,1,5,8};
+        int target = 8;
+        Arrays.sort(candidates);
+        List<List<Integer>> lists = combinationSum2(candidates, target);
         System.out.println(lists);
     }
 
-    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
-        Arrays.sort(candidates);
+    static List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(candidates);
         findCombinations(0, candidates, target, new ArrayList<>(), ans);
         return ans;
     }
 
     static void findCombinations(int index, int[] candidates, int target, List<Integer> ds, List<List<Integer>> ans) {
+        if (index == candidates.length) {
+            if (target == 0) {
+                ans.add(new ArrayList<>(ds));
+            }
+            return;
+        }
         if (target == 0) {
             ans.add(new ArrayList<>(ds));
             return;
         }
-        if (index == candidates.length) {
-            return;
-        }
-        if (target >= candidates[index]) {
-            ds.add(candidates[index]);
-            findCombinations(index, candidates, (target - candidates[index]), ds, ans);
-            ds.remove(ds.size() - 1);
-            findCombinations(index + 1, candidates, target, ds, ans);
+
+        for (int i = index; i < candidates.length; i++) {
+            if ((i > index) && (candidates[i] == candidates[i - 1])) {
+                continue;
+            }
+            if (target >= candidates[i]) {
+                ds.add(candidates[i]);
+                findCombinations(i+1, candidates, target - candidates[i], ds, ans);
+                ds.remove(ds.size() - 1);
+            } else {
+                break;
+            }
         }
     }
 }
