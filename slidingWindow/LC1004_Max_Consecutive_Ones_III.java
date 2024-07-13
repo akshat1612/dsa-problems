@@ -1,6 +1,6 @@
 package slidingWindow;
 
-public class LC485_Max_Consecutive_Ones_III {
+public class LC1004_Max_Consecutive_Ones_III {
     public static void main(String[] args) {
         int[] nums = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
         System.out.println(longestOnes(nums, 2));
