@@ -2,7 +2,7 @@ package backtracking;
 
 import java.util.Arrays;
 
-public class M_Coloring_graph_GFG {
+public class GFG_M_Coloring_graph {
     public static void main(String[] args) {
         int n = 4;
         int m = 3;
