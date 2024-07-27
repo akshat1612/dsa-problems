@@ -13,6 +13,15 @@ class Node {
         this.val = val;
         this.next = null;
     }
+
+    public String toString(Node head) {
+        StringBuilder a = new StringBuilder();
+        while (head != null) {
+            a.append(head.val).append(" --> ");
+            head = head.next;
+        }
+        return a.substring(0, a.length() - 5);
+    }
 }
 
 class MyLinkedList {
