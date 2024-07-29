@@ -24,6 +24,10 @@ class ListNode {
         }
         return a.substring(0, a.length() - 5);
     }
+
+    public String print() {
+        return String.valueOf(this.val);
+    }
 }
 
 public class LC2_Sum_Linked_List {
