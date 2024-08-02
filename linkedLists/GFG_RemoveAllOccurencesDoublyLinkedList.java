@@ -18,7 +18,7 @@ public class GFG_RemoveAllOccurencesDoublyLinkedList {
         node4.next = node5;
         node5.prev = node4;
         node5.next = node6;
-        node6.prev = node6;
+        node6.prev = node5;
         node6.next = node7;
         node7.prev = node6;
         node7.next = null;
