@@ -1,68 +1,45 @@
 package linkedLists;
 
-public class LC25_Reverse_k_nodes_Linked_List {
+public class LC61_Rotate_by_k_nodes_Linked_List {
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6))))));
         ListNode l2 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6))))));
         System.out.println(l1.print(l1));
-        System.out.println(l1.print(reverseKGroup(l1, 3)));
+        System.out.println(l1.print(rotateRight(l1, 3)));
         System.out.println();
         System.out.println(l2.print(l2));
-        System.out.println(l2.print(reverseKGroup(l2, 4)));
+        System.out.println(l2.print(rotateRight(l2, 2)));
     }
 
-    static  ListNode reverseKGroup(ListNode head, int k) {
-        if(head == null || head.next == null) {
+    static ListNode rotateRight(ListNode head, int k) {
+        if (head == null || head.next == null) {
             return head;
         }
+
         ListNode temp = head;
         ListNode prev = null;
+        int len = 0;
         while(temp != null) {
-            ListNode kNode = findKNode(temp, k);
-            if(kNode == null) {
-                prev.next = temp;
-                break;
-            }
-            ListNode next = kNode.next;
-            kNode.next = null;
-            ListNode newHead = reverse(temp);
-            if(temp == head) {
-                head = newHead;
-            }
-            if(prev != null) {
-                prev.next = newHead;
-            }
+            len++;
             prev = temp;
-            temp = next;
-        }
-        return head;
-    }
-
-    static ListNode findKNode(ListNode head, int k) {
-        if(head == null) {
-            return head;
-        }
-        ListNode temp = head;
-        while(temp != null && k > 1) {
             temp = temp.next;
-            k--;
         }
-        return temp;
-    }
 
-    static ListNode reverse(ListNode head) {
-        if(head == null || head.next == null) {
+        k = k % len;
+
+        if (k == 0) {
             return head;
         }
-        ListNode temp = head;
-        ListNode prev = null;
-        ListNode next = null;
-        while(temp != null) {
-            next = temp.next;
-            temp.next = prev;
-            prev = temp;
-            temp = next;
+        temp = head;
+        int count = len - k;
+        while(count > 1) {
+            temp = temp.next;
+            count--;
         }
-        return prev;
+
+        ListNode nt = temp.next;
+        temp.next= null;
+        prev.next = head;
+        return nt;
     }
 }
