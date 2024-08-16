@@ -2,6 +2,9 @@ package graphs;
 
 import java.util.ArrayList;
 
+/**
+ * Util for Graphs questions
+ */
 public class GraphUtils {
 
     public static ArrayList<ArrayList<Integer>> createAdjacencyArray(int[][] adjacency) {
