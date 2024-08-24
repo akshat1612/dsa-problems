@@ -10,4 +10,12 @@ public class ArrayUtils {
             System.out.println();
         }
     }
+    public static void printMatrix(char[][] matrix) {
+        for(char[] i: matrix) {
+            for (char j: i) {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+    }
 }
